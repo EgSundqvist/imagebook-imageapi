@@ -1,0 +1,18 @@
+aws_iam_user:
+  access_key_id: ""
+  secret_access_key: ""
+  region: eu-north-1
+jwt:
+  frontend_secret_key: ""
+  backend_secret_key: ""
+
+# Database credentials
+database:
+  # antingen denna
+  file: ""
+  # eller alla dessa (om file är blankt)
+  sql-user: ""
+  sql-pass: ""
+  sql-server: "172.17.0.2"
+  sql-database: "imagedatabase"
+  sql-port: 3306

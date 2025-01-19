@@ -1,0 +1,14 @@
+
+.env
+
+/bin/
+/pkg/
+/out/
+
+*.log
+
+.vscode/
+.idea/
+*.swp
+
+docker-compose.override.yml
