@@ -6,12 +6,6 @@ env:
     DOCKERHUB_PASSWORD: "/dockerhub/password"
 
 phases:
-  install:
-    runtime-versions:
-      golang: 1.18
-    commands:
-      - echo Installing dependencies...
-      - go mod download
   pre_build:
     commands:
       - echo Logging in to Docker Hub...
