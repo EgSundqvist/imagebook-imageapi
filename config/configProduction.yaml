@@ -13,6 +13,6 @@ database:
   # eller alla dessa (om file är blankt)
   sql-user: ""
   sql-pass: ""
-  sql-server: "172.17.0.2"
+  sql-server: "mysqlserver1"
   sql-database: "imagedatabase"
   sql-port: 3306
