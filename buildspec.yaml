@@ -2,19 +2,19 @@ version: 0.2
 
 env:
   parameter-store:
-    DOCKERHUB_USERNAME: "/dockerhub/username"
-    DOCKERHUB_PASSWORD: "/dockerhub/password"
+    DOCKER_USERNAME: "/dockerhub/username"
+    DOCKER_PASSWORD: "/dockerhub/password"
 
 phases:
   pre_build:
     commands:
-      - echo Logging in to Docker Hub...
-      - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+      - echo Logging in to Gitea Docker registry...
+      - docker login giteaserver.spacetechnology.net -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t egsundqvist/imagebook-imageapi:latest .
+      - docker build -t giteaserver.spacetechnology.net/egsundqvist/imagebook-imageapi:latest .
   post_build:
     commands:
-      - echo Pushing the Docker image to Docker Hub...
-      - docker push egsundqvist/imagebook-imageapi:latest
+      - echo Pushing the Docker image to Gitea Docker registry...
+      - docker push giteaserver.spacetechnology.net/egsundqvist/imagebook-imageapi:latest
