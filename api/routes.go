@@ -11,7 +11,7 @@ func SetupRouter() *gin.Engine {
 
 	// Lägg till CORS-middleware
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:5173", "http://127.0.0.1:5000", "http://userapi.chickenkiller.com", "http://staticdemo.chickenkiller.com"}, // Tillåt anrop från dessa URL:er (lägg till user-API:ets URL)
+		AllowOrigins:     []string{"http://localhost:5173", "http://127.0.0.1:5000", "https://userapi.spacetechnology.net", "https://imagebook.spacetechnology.net"}, // Tillåt anrop från dessa URL:er (lägg till user-API:ets URL)
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
