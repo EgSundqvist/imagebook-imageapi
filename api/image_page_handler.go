@@ -14,8 +14,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// ...existing code...
-
 func GetImagesPageHandler(c *gin.Context) {
 	pageNumber, err := strconv.Atoi(c.Param("pageNumber"))
 	if err != nil || pageNumber < 1 {
@@ -78,5 +76,3 @@ func GetImagesPageHandler(c *gin.Context) {
 
 	c.JSON(http.StatusOK, images)
 }
-
-// ...existing code...

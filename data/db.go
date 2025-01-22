@@ -18,7 +18,7 @@ func InitDatabase(file, server, database, username, password string, port int) {
 	} else {
 		DB, _ = gorm.Open(sqlite.Open(file), &gorm.Config{})
 	}
-	DB.AutoMigrate(&models.Image{}) // Anpassa detta till dina modeller
+	DB.AutoMigrate(&models.Image{})
 }
 
 func openMySql(server, database, username, password string, port int) *gorm.DB {

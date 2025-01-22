@@ -13,7 +13,6 @@ func Seed() {
 		log.Fatalf("Failed to count images: %v", err)
 	}
 
-	// If there are no images, seed the database
 	if count == 0 {
 		images := []models.Image{
 			{URL: "https://imagebook-images.s3.eu-north-1.amazonaws.com/users/defaultUser/images/20150103_124830.jpg", Description: "Image 1"},

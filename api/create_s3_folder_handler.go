@@ -10,23 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// CreateS3FolderRequest representerar förfrågan för att skapa en ny mapp i S3
-type CreateS3FolderRequest struct {
-}
-
-// CreateS3FolderHandler skapar en ny mapp i S3 för en användare
-// ...existing code...
-
 func CreateS3FolderHandler(c *gin.Context) {
-	// Ta bort bindningen av JSON-request eftersom vi inte längre behöver UserID från requesten
-	/*
-	   var req CreateS3FolderRequest
-	   if err := c.ShouldBindJSON(&req); err != nil {
-	       log.Printf("Invalid request: %v", err)
-	       c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request"})
-	       return
-	   }
-	*/
 
 	// Hämta userID från JWT-token
 	userID, exists := c.Get("userID")
@@ -75,5 +59,3 @@ func CreateS3FolderHandler(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, gin.H{"message": "S3 folders created successfully"})
 }
-
-// ...existing code...

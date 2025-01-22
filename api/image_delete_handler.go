@@ -129,7 +129,3 @@ func ConfirmDeleteHandler(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Image metadata deleted successfully"})
 }
-
-// ...existing code...
-
-// ...existing code...

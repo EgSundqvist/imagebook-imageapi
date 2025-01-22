@@ -14,7 +14,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// UploadURLRequest representerar förfrågan för att generera en presignerad URL
 type UploadURLRequest struct {
 	Filename    string `json:"filename" binding:"required"`
 	Description string `json:"description"`
@@ -49,7 +48,6 @@ func GenerateUploadURLHandler(c *gin.Context) {
 	bucket := "imagebook-images"
 	key := "users/" + userID + "/images/" + req.Filename
 
-	// Generate a presigned URL for PUT
 	putReq, _ := svc.PutObjectRequest(&s3.PutObjectInput{
 		Bucket: aws.String(bucket),
 		Key:    aws.String(key),

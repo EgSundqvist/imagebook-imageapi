@@ -18,7 +18,7 @@ func main() {
 		config.AppConfig.Database.Port,
 	)
 
-	data.Seed() // Seed the database with initial data
+	data.Seed()
 
 	router := api.SetupRouter()
 	router.Run(":8080")

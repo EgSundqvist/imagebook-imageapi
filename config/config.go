@@ -52,10 +52,10 @@ func LoadConfig() {
 }
 
 func readFile(cfg *Config) {
-	fileName := "config/config.yaml" // Ändra till en relativ väg för lokal utveckling
+	fileName := "config/config.yaml"
 	s := os.Getenv("RUNENVIRONMENT")
 	if len(s) > 0 {
-		fileName = "config/config" + s + ".yaml" // Ändra till en relativ väg för lokal utveckling
+		fileName = "config/config" + s + ".yaml"
 	}
 
 	f, err := os.Open(fileName)

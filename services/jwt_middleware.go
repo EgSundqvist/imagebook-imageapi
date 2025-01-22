@@ -11,7 +11,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// AuthMiddleware är en middleware för att hantera autentisering med JWT
+// AuthMiddleware för att hantera autentisering med JWT
 func AuthMiddleware() gin.HandlerFunc {
 	secretKey := config.AppConfig.JWT.FrontendSecretKey
 	return func(c *gin.Context) {
@@ -32,7 +32,7 @@ func AuthMiddleware() gin.HandlerFunc {
 		})
 
 		if err != nil || !token.Valid {
-			log.Printf("Token parsing error: %v", err) // Lägg till denna rad för att logga token parsing error
+			log.Printf("Token parsing error: %v", err)
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
 			c.Abort()
 			return
@@ -58,7 +58,7 @@ func AuthMiddleware() gin.HandlerFunc {
 	}
 }
 
-// BackendAuthMiddleware är en middleware för att hantera autentisering med backend JWT
+// BackendAuthMiddleware för att hantera autentisering med backend JWT
 func BackendAuthMiddleware() gin.HandlerFunc {
 	backendSecretKey := config.AppConfig.JWT.BackendSecretKey
 	return func(c *gin.Context) {
@@ -79,7 +79,7 @@ func BackendAuthMiddleware() gin.HandlerFunc {
 		})
 
 		if err != nil || !token.Valid {
-			log.Printf("Token parsing error: %v", err) // Lägg till denna rad för att logga token parsing error
+			log.Printf("Token parsing error: %v", err)
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
 			c.Abort()
 			return

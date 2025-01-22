@@ -4,7 +4,6 @@ import (
 	"github.com/EgSundqvist/imagebook-imageapi/models"
 )
 
-// GetAllImages hämtar alla bilder från databasen
 func GetAllImages() ([]models.Image, error) {
 	var images []models.Image
 	if err := DB.Find(&images).Error; err != nil {
@@ -13,7 +12,6 @@ func GetAllImages() ([]models.Image, error) {
 	return images, nil
 }
 
-// GetImageByID hämtar en specifik bild baserat på dess ID
 func GetImageByID(id string, userID uint) (models.Image, error) {
 	var image models.Image
 	if err := DB.Where("id = ? AND user_id = ?", id, userID).First(&image).Error; err != nil {
@@ -22,7 +20,6 @@ func GetImageByID(id string, userID uint) (models.Image, error) {
 	return image, nil
 }
 
-// GetImagesPage hämtar en sida med bilder från databasen baserat på användarens ID
 func GetImagesPage(userID uint, pageNumber int, pageSize int) ([]models.Image, error) {
 	var images []models.Image
 	offset := (pageNumber - 1) * pageSize
@@ -32,7 +29,6 @@ func GetImagesPage(userID uint, pageNumber int, pageSize int) ([]models.Image, e
 	return images, nil
 }
 
-// CreateImage sparar bildens metadata i databasen
 func CreateImage(image models.Image) error {
 	if err := DB.Create(&image).Error; err != nil {
 		return err
@@ -40,7 +36,6 @@ func CreateImage(image models.Image) error {
 	return nil
 }
 
-// DeleteImageByID tar bort bildens metadata från databasen baserat på ID
 func DeleteImageByID(id string, userID uint) error {
 	if err := DB.Unscoped().Where("id = ? AND user_id = ?", id, userID).Delete(&models.Image{}).Error; err != nil {
 		return err

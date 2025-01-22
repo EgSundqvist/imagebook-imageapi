@@ -9,7 +9,6 @@ import (
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
 
-	// Lägg till CORS-middleware
 	router.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"http://localhost:5173", "http://127.0.0.1:5000", "https://userapi.spacetechnology.net", "https://imagebook.spacetechnology.net"}, // Tillåt anrop från dessa URL:er (lägg till user-API:ets URL)
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
@@ -29,11 +28,11 @@ func SetupRouter() *gin.Engine {
 	protected := router.Group("/")
 	protected.Use(services.AuthMiddleware())
 	{
-		protected.POST("/upload-url", GenerateUploadURLHandler)         // Endpoint för att generera presignerade URL:er för uppladdning
-		protected.POST("/confirm-upload", ConfirmUploadHandler)         // Endpoint för att bekräfta uppladdning och spara metadata
-		protected.POST("/delete-url", GenerateDeleteURLHandler)         // Endpoint för att generera presignerade URL:er för borttagning
-		protected.POST("/confirm-delete", ConfirmDeleteHandler)         // Endpoint för att bekräfta borttagning och ta bort metadata
-		protected.GET("/images/page/:pageNumber", GetImagesPageHandler) // Skyddad endpoint för paginerade bilder
+		protected.POST("/upload-url", GenerateUploadURLHandler)
+		protected.POST("/confirm-upload", ConfirmUploadHandler)
+		protected.POST("/delete-url", GenerateDeleteURLHandler)
+		protected.POST("/confirm-delete", ConfirmDeleteHandler)
+		protected.GET("/images/page/:pageNumber", GetImagesPageHandler)
 		protected.GET("/images/:id", GetImageByIdHandler)
 
 	}
