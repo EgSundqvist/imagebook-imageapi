@@ -100,6 +100,8 @@ func readSecrets(cfg *Config) {
 		"/imagebook-imageapi/jwt/backend_secret_key":  &cfg.JWT.BackendSecretKey,
 		"/imagebook-imageapi/database/sql-user":       &cfg.Database.Username,
 		"/imagebook-imageapi/database/sql-pass":       &cfg.Database.Password,
+		"/imagebook-imageapi/database/sql-database":   &cfg.Database.Database,
+		"/imagebook-imageapi/database/sql-server":     &cfg.Database.Server,
 	}
 
 	for param, dest := range params {
