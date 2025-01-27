@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/EgSundqvist/imagebook-imageapi/config"
 	"github.com/EgSundqvist/imagebook-imageapi/data"
 	"github.com/EgSundqvist/imagebook-imageapi/models"
 	"github.com/EgSundqvist/imagebook-imageapi/services"
@@ -45,7 +46,7 @@ func GenerateUploadURLHandler(c *gin.Context) {
 	}
 
 	svc := s3.New(sess)
-	bucket := "imagebook-images"
+	bucket := config.AppConfig.S3Bucket
 	key := "users/" + userID + "/images/" + req.Filename
 
 	putReq, _ := svc.PutObjectRequest(&s3.PutObjectInput{

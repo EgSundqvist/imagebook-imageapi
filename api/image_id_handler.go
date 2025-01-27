@@ -7,6 +7,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/EgSundqvist/imagebook-imageapi/config"
 	"github.com/EgSundqvist/imagebook-imageapi/data"
 	"github.com/EgSundqvist/imagebook-imageapi/services"
 	"github.com/aws/aws-sdk-go/aws"
@@ -44,7 +45,7 @@ func GetImageByIdHandler(c *gin.Context) {
 	}
 
 	svc := s3.New(sess)
-	bucket := "imagebook-images"
+	bucket := config.AppConfig.S3Bucket
 
 	// Parse the URL to extract the key
 	parsedURL, err := url.Parse(image.URL)

@@ -16,3 +16,5 @@ database:
   sql-server: ""
   sql-database: ""
   sql-port: 3306
+
+s3_bucket: ""

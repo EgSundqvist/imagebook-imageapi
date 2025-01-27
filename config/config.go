@@ -32,6 +32,7 @@ type Config struct {
 		Server   string `yaml:"sql-server" envconfig:"DB_SERVER"`
 		Port     int    `yaml:"sql-port" envconfig:"DB_PORT"`
 	} `yaml:"database"`
+	S3Bucket string `yaml:"s3_bucket" envconfig:"S3_BUCKET"`
 }
 
 var AppConfig Config
@@ -102,6 +103,12 @@ func readSecrets(cfg *Config) {
 		"/imagebook-imageapi/database/sql-pass":       &cfg.Database.Password,
 		"/imagebook-imageapi/database/sql-database":   &cfg.Database.Database,
 		"/imagebook-imageapi/database/sql-server":     &cfg.Database.Server,
+	}
+
+	if os.Getenv("RUNENVIRONMENT") == "Production" {
+		params["/imagebook-imageapi/s3/bucketnameprod"] = &cfg.S3Bucket
+	} else {
+		params["/imagebook-imageapi/s3/bucketnamedev"] = &cfg.S3Bucket
 	}
 
 	for param, dest := range params {

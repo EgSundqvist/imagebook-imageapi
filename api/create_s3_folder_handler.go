@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/EgSundqvist/imagebook-imageapi/config"
 	"github.com/EgSundqvist/imagebook-imageapi/services"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3"
@@ -29,7 +30,7 @@ func CreateS3FolderHandler(c *gin.Context) {
 	}
 
 	svc := s3.New(sess)
-	bucket := "imagebook-images"
+	bucket := config.AppConfig.S3Bucket
 	userFolderKey := "users/" + userID.(string) + "/"
 	imagesFolderKey := userFolderKey + "images/"
 

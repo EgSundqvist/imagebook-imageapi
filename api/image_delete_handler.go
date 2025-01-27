@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/EgSundqvist/imagebook-imageapi/config"
 	"github.com/EgSundqvist/imagebook-imageapi/data"
 	"github.com/EgSundqvist/imagebook-imageapi/services"
 	"github.com/aws/aws-sdk-go/aws"
@@ -55,8 +56,8 @@ func GenerateDeleteURLHandler(c *gin.Context) {
 	}
 
 	svc := s3.New(sess)
-	bucket := "imagebook-images"
-	key := image.URL[len("https://imagebook-images.s3.eu-north-1.amazonaws.com/"):]
+	bucket := config.AppConfig.S3Bucket
+	key := image.URL[len("https://"+bucket+".s3.eu-north-1.amazonaws.com/"):]
 
 	// Generate a presigned URL for DELETE
 	delReq, _ := svc.DeleteObjectRequest(&s3.DeleteObjectInput{
