@@ -13,13 +13,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// DeleteURLRequest representerar förfrågan för att generera en presignerad URL för borttagning
 type DeleteURLRequest struct {
 	ID string `json:"id" binding:"required"`
 }
-
-// GenerateDeleteURLHandler genererar en presignerad URL för att ta bort en bild från S3
-// ...existing code...
 
 func GenerateDeleteURLHandler(c *gin.Context) {
 	var req DeleteURLRequest
@@ -79,12 +75,6 @@ func GenerateDeleteURLHandler(c *gin.Context) {
 	// Returnera den presignerade URL:en till klienten
 	c.JSON(http.StatusOK, gin.H{"PresignedURL": presignedURL})
 }
-
-// ...existing code...
-
-// ...existing code...
-
-// ...existing code...
 
 func ConfirmDeleteHandler(c *gin.Context) {
 	var req struct {

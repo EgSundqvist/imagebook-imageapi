@@ -7,7 +7,6 @@ import (
 )
 
 func Seed() {
-	// Check if there are already images in the database
 	var count int64
 	if err := DB.Model(&models.Image{}).Count(&count).Error; err != nil {
 		log.Fatalf("Failed to count images: %v", err)
