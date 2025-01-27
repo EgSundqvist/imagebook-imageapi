@@ -12,4 +12,7 @@
 *.swp
 
 docker-compose.override.yml
+
 imagebook.db
+
+__debug_bin*
