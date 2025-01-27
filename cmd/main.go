@@ -18,8 +18,6 @@ func main() {
 		config.AppConfig.Database.Port,
 	)
 
-	data.Seed()
-
 	router := api.SetupRouter()
 	router.Run(":8080")
 }

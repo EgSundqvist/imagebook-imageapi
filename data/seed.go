@@ -15,13 +15,13 @@ func Seed() {
 
 	if count == 0 {
 		images := []models.Image{
-			{URL: "https://imagebook-images.s3.eu-north-1.amazonaws.com/users/defaultUser/images/20150103_124830.jpg", Description: "Image 1"},
-			{URL: "https://imagebook-images.s3.eu-north-1.amazonaws.com/users/defaultUser/images/20150103_145629.jpg", Description: "Image 2"},
-			{URL: "https://imagebook-images.s3.eu-north-1.amazonaws.com/users/defaultUser/images/20150103_151620.jpg", Description: "Image 3"},
-			{URL: "https://imagebook-images.s3.eu-north-1.amazonaws.com/users/defaultUser/images/20150107_020628.jpg", Description: "Image 4"},
-			{URL: "https://imagebook-images.s3.eu-north-1.amazonaws.com/users/defaultUser/images/20150107_025553.jpg", Description: "Image 5"},
-			{URL: "https://imagebook-images.s3.eu-north-1.amazonaws.com/users/defaultUser/images/20150107_151824.jpg", Description: "Image 6"},
-			{URL: "https://imagebook-images.s3.eu-north-1.amazonaws.com/users/defaultUser/images/IMG_20141225_103802.jpg", Description: "Image 7"},
+			{URL: "your-seed-image1.jpg", Description: "Image 1"},
+			{URL: "your-seed-image2.jpg", Description: "Image 2"},
+			{URL: "your-seed-image3.jpg", Description: "Image 3"},
+			{URL: "your-seed-image4.jpg", Description: "Image 4"},
+			{URL: "your-seed-image5.jpg", Description: "Image 5"},
+			{URL: "your-seed-image6.jpg", Description: "Image 6"},
+			{URL: "your-seed-image7.jpg", Description: "Image 7"},
 		}
 
 		for _, image := range images {
