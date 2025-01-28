@@ -20,7 +20,6 @@ type UploadURLRequest struct {
 	Description string `json:"description"`
 }
 
-// GenerateUploadURLHandler genererar en presignerad URL för att ladda upp en bild till S3
 func GenerateUploadURLHandler(c *gin.Context) {
 	var req UploadURLRequest
 	if err := c.ShouldBindJSON(&req); err != nil {

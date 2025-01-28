@@ -34,7 +34,7 @@ func CreateS3FolderHandler(c *gin.Context) {
 	userFolderKey := "users/" + userID.(string) + "/"
 	imagesFolderKey := userFolderKey + "images/"
 
-	// Create the user folder in S3
+	// Skapa "user"-mappen i S3
 	_, err = svc.PutObject(&s3.PutObjectInput{
 		Bucket: aws.String(bucket),
 		Key:    aws.String(userFolderKey),
@@ -45,7 +45,7 @@ func CreateS3FolderHandler(c *gin.Context) {
 		return
 	}
 
-	// Create the images folder in S3
+	// Skapa "images"-mappen i S3
 	_, err = svc.PutObject(&s3.PutObjectInput{
 		Bucket: aws.String(bucket),
 		Key:    aws.String(imagesFolderKey),

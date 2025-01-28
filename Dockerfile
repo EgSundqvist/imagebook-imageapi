@@ -35,7 +35,7 @@ COPY --from=builder /app/main /app/main
 COPY config/config.yaml /app/config/config.yaml
 COPY config/configProduction.yaml /app/config/configProduction.yaml
 
-# Expose port 8080 to the outside world
+
 EXPOSE 8080
 
 ENTRYPOINT ["/app/main"]

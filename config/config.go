@@ -32,7 +32,9 @@ type Config struct {
 		Server   string `yaml:"sql-server" envconfig:"DB_SERVER"`
 		Port     int    `yaml:"sql-port" envconfig:"DB_PORT"`
 	} `yaml:"database"`
-	S3Bucket string `yaml:"s3_bucket" envconfig:"S3_BUCKET"`
+	S3Bucket   string `yaml:"s3_bucket" envconfig:"S3_BUCKET"`
+	UserAPIURL string `yaml:"userapi_url" envconfig:"USERAPI_URL"`
+	ClientURL  string `yaml:"client_url" envconfig:"CLIENT_URL"`
 }
 
 var AppConfig Config
@@ -107,6 +109,8 @@ func readSecrets(cfg *Config) {
 
 	if os.Getenv("RUNENVIRONMENT") == "Production" {
 		params["/imagebook-imageapi/s3/bucketnameprod"] = &cfg.S3Bucket
+		params["/imagebook-imageapi/userapi_url"] = &cfg.UserAPIURL
+		params["/imagebook-imageapi/client_url"] = &cfg.ClientURL
 	} else {
 		params["/imagebook-imageapi/s3/bucketnamedev"] = &cfg.S3Bucket
 	}

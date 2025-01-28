@@ -59,7 +59,7 @@ func GenerateDeleteURLHandler(c *gin.Context) {
 	bucket := config.AppConfig.S3Bucket
 	key := image.URL[len("https://"+bucket+".s3.eu-north-1.amazonaws.com/"):]
 
-	// Generate a presigned URL for DELETE
+	// Generera en presignerad URL för att ta bort bilden från S3
 	delReq, _ := svc.DeleteObjectRequest(&s3.DeleteObjectInput{
 		Bucket: aws.String(bucket),
 		Key:    aws.String(key),

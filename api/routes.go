@@ -1,6 +1,9 @@
 package api
 
 import (
+	"os"
+
+	"github.com/EgSundqvist/imagebook-imageapi/config"
 	"github.com/EgSundqvist/imagebook-imageapi/services"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -9,15 +12,21 @@ import (
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
 
+	var allowOrigins []string
+	if os.Getenv("RUNENVIRONMENT") == "Production" {
+		allowOrigins = []string{config.AppConfig.UserAPIURL, config.AppConfig.ClientURL}
+	} else {
+		allowOrigins = []string{os.Getenv("USERAPI_URL"), os.Getenv("CLIENT_URL")}
+	}
+
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:5173", "http://127.0.0.1:5000", "https://userapi.spacetechnology.net", "https://imagebook.spacetechnology.net"}, // Tillåt anrop från dessa URL:er (lägg till user-API:ets URL)
+		AllowOrigins:     allowOrigins,
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 	}))
 
-	// Lägg till en enkel ping endpoint
 	router.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",

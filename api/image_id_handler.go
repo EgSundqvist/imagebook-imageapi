@@ -15,7 +15,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// GetImageByIdHandler hämtar metadata och en presignerad URL för en specifik bild baserat på dess ID
 func GetImageByIdHandler(c *gin.Context) {
 	id := c.Param("id")
 
@@ -47,7 +46,6 @@ func GetImageByIdHandler(c *gin.Context) {
 	svc := s3.New(sess)
 	bucket := config.AppConfig.S3Bucket
 
-	// Parse the URL to extract the key
 	parsedURL, err := url.Parse(image.URL)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to parse image URL"})
@@ -55,7 +53,7 @@ func GetImageByIdHandler(c *gin.Context) {
 	}
 	key := strings.TrimPrefix(parsedURL.Path, "/")
 
-	// Generate a presigned URL
+	// Generera en presignerad URL för att hämta objektet från S3
 	req, _ := svc.GetObjectRequest(&s3.GetObjectInput{
 		Bucket: aws.String(bucket),
 		Key:    aws.String(key),

@@ -52,7 +52,6 @@ func GetImagesPageHandler(c *gin.Context) {
 	bucket := config.AppConfig.S3Bucket
 
 	for i := range images {
-		// Parse the URL to extract the key
 		parsedURL, err := url.Parse(images[i].URL)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to parse image URL"})
@@ -60,7 +59,7 @@ func GetImagesPageHandler(c *gin.Context) {
 		}
 		key := strings.TrimPrefix(parsedURL.Path, "/")
 
-		// Generate a presigned URL
+		// Generera en presignerad URL för att hämta från S3
 		req, _ := svc.GetObjectRequest(&s3.GetObjectInput{
 			Bucket: aws.String(bucket),
 			Key:    aws.String(key),
