@@ -18,3 +18,5 @@ database:
   sql-port: 3306
 
 s3_bucket: ""
+userapi_url: ""
+client_url: ""
